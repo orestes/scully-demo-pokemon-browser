@@ -1,1 +1,1 @@
-[{"route":"/"}]
+[{"route":"/pokemon"},{"route":"/pokemon/view/bulbasaur"},{"route":"/pokemon/view/ivysaur"},{"route":"/pokemon/view/venusaur"},{"route":"/pokemon/view/charmander"},{"route":"/pokemon/view/charmeleon"},{"route":"/pokemon/view/charizard"},{"route":"/pokemon/view/squirtle"},{"route":"/pokemon/view/wartortle"},{"route":"/pokemon/view/blastoise"},{"route":"/pokemon/view/caterpie"},{"route":"/"}]
