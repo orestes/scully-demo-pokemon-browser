@@ -1,0 +1,9 @@
+<ng-template #loading>Loading pokémon list ...</ng-template>
+<ng-container *ngIf="pokemonList$ | async as list else loading">
+  <p>Found {{ list.length }} pokémon</p>
+  <ul>
+    <li *ngFor="let pokemon of list">
+      <a [routerLink]="['view', pokemon.name]">{{ pokemon.name }}</a>
+    </li>
+  </ul>
+</ng-container>
