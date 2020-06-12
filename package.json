@@ -9,6 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve": "ng e2e",
+    "serve:dist": "httpster --dir dist/demo --port 3333 --pushstate",
+    "serve:static": "httpster --dir dist/static --port 4444 --pushstate",
     "scully": "scully",
     "scully:serve": "scully serve"
   },
@@ -37,6 +39,7 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^5.1.2",
+    "httpster": "^1.0.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
