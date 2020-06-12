@@ -1,4 +1,5 @@
 import {registerPlugin, ScullyConfig} from '@scullyio/scully';
+import {DisableAngular} from 'scully-plugin-disable-angular';
 
 // region Plugin for Pokemon Ids
 
@@ -29,6 +30,7 @@ registerPlugin('router', typeName, plugin);
 export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: 'demo',
+  defaultPostRenderers: [DisableAngular],
   outDir: './dist/static',
   routes: {
     '/pokemon/view/:id': {
