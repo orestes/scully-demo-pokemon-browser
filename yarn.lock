@@ -4626,10 +4626,10 @@ https-proxy-agent@^4.0.0:
     agent-base "5"
     debug "4"
 
-httpster@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/httpster/-/httpster-1.0.5.tgz#c3c515e062b76de3913c8d41eca70eb0de043297"
-  integrity sha512-mWc2EiJptmxWjHBOhcBuAX1kVwfy4AhbN/wplGWl15b4B0sr3pSlb0nfAIr/wPQcPEiGl8mNONpJ3vpTmp9T5g==
+httpster@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/httpster/-/httpster-1.1.0.tgz#7db671e81180a1b253b430d0d2d123820b7f6e0e"
+  integrity sha512-clvsY6m8L+LIfbwGG9I2FQBdmcWemFUWfnAr6a3tFJ+vJhmzlFkCCZHxCW16YmHLHauXwTsEyPgccsmnf0yCMQ==
   dependencies:
     basic-auth "^2.0.0"
     commander "2.17.x"
