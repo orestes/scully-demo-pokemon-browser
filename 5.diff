@@ -1,0 +1,67 @@
+From 5ea0c89f902926cb2c173fab351318cf2bca3d51 Mon Sep 17 00:00:00 2001
+From: Orestes Carracedo <orestes@orestes.io>
+Date: Fri, 12 Jun 2020 15:08:45 +0200
+Subject: [PATCH] feat: Add Scully plugin to handle /pokemon/view/:id routes
+
+---
+ scully.demo.config.ts         | 33 ++++++++++++++++++++++++++++++++-
+ src/assets/scully-routes.json |  2 +-
+ 2 files changed, 33 insertions(+), 2 deletions(-)
+
+diff --git a/scully.demo.config.ts b/scully.demo.config.ts
+index 73536c9..424948c 100644
+--- a/scully.demo.config.ts
++++ b/scully.demo.config.ts
+@@ -1,8 +1,39 @@
+-import { ScullyConfig } from '@scullyio/scully';
++import {registerPlugin, ScullyConfig} from '@scullyio/scully';
++
++// region Plugin for Pokemon Ids
++
++const {httpGetJson, routeSplit} = require('@scullyio/scully');
++
++import {PokeAPIList, PokeAPIResult} from 'src/app/pokemon/services/poke-api.model';
++
++export const typeName = 'pokemonIds';
++
++export const plugin = async (route, pluginConfig) => {
++  const list: PokeAPIList = await httpGetJson(pluginConfig.url);
++
++  // Helper to generate URLs from the given config
++  const {createPath} = routeSplit(route);
++
++  return list.results.map((item: PokeAPIResult) => {
++    return {
++      route: createPath(item.name), // Pass pokemon name as :id into the route
++    };
++  });
++};
++
++// endregion
++
++// Register our plugin for routes of type typeName
++registerPlugin('router', typeName, plugin);
++
+ export const config: ScullyConfig = {
+   projectRoot: './src',
+   projectName: 'demo',
+   outDir: './dist/static',
+   routes: {
++    '/pokemon/view/:id': {
++      type: typeName,
++      url: 'https://pokeapi.co/api/v2/pokemon?limit=10'
++    }
+   }
+ };
+diff --git a/src/assets/scully-routes.json b/src/assets/scully-routes.json
+index a4bf23f..99eb464 100644
+--- a/src/assets/scully-routes.json
++++ b/src/assets/scully-routes.json
+@@ -1 +1 @@
+-[{"route":"/"}]
+\ No newline at end of file
++[{"route":"/pokemon"},{"route":"/pokemon/view/bulbasaur"},{"route":"/pokemon/view/ivysaur"},{"route":"/pokemon/view/venusaur"},{"route":"/pokemon/view/charmander"},{"route":"/pokemon/view/charmeleon"},{"route":"/pokemon/view/charizard"},{"route":"/pokemon/view/squirtle"},{"route":"/pokemon/view/wartortle"},{"route":"/pokemon/view/blastoise"},{"route":"/pokemon/view/caterpie"},{"route":"/"}]
+\ No newline at end of file
+-- 
+2.20.1.windows.1
+

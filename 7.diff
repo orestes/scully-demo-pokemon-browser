@@ -1,0 +1,79 @@
+From 1a25b3aac809dbc5f83502c080b9df9c6e165eb2 Mon Sep 17 00:00:00 2001
+From: Orestes Carracedo <orestes@orestes.io>
+Date: Fri, 12 Jun 2020 15:40:12 +0200
+Subject: [PATCH] feat: Remove Angular scripts after generating static site
+
+---
+ package.json          | 4 +++-
+ scully.demo.config.ts | 2 ++
+ yarn.lock             | 5 +++++
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index 25914dc..1252273 100644
+--- a/package.json
++++ b/package.json
+@@ -5,6 +5,7 @@
+     "ng": "ng",
+     "start": "ng serve",
+     "build": "ng build",
++    "build:prod": "ng build --prod --stats-json",
+     "test": "ng test",
+     "lint": "ng lint",
+     "e2e": "ng e2e",
+@@ -28,6 +29,7 @@
+     "@scullyio/ng-lib": "latest",
+     "@scullyio/scully": "latest",
+     "rxjs": "~6.5.4",
++    "scully-plugin-disable-angular": "^4.0.2",
+     "tslib": "^1.10.0",
+     "zone.js": "~0.10.2"
+   },
+@@ -35,9 +37,9 @@
+     "@angular-devkit/build-angular": "~0.901.8",
+     "@angular/cli": "~9.1.8",
+     "@angular/compiler-cli": "~9.1.11",
+-    "@types/node": "^12.11.1",
+     "@types/jasmine": "~3.5.0",
+     "@types/jasminewd2": "~2.0.3",
++    "@types/node": "^12.11.1",
+     "codelyzer": "^5.1.2",
+     "httpster": "^1.0.5",
+     "jasmine-core": "~3.5.0",
+diff --git a/scully.demo.config.ts b/scully.demo.config.ts
+index 424948c..49e08cc 100644
+--- a/scully.demo.config.ts
++++ b/scully.demo.config.ts
+@@ -1,4 +1,5 @@
+ import {registerPlugin, ScullyConfig} from '@scullyio/scully';
++import {DisableAngular} from 'scully-plugin-disable-angular';
+ 
+ // region Plugin for Pokemon Ids
+ 
+@@ -29,6 +30,7 @@ registerPlugin('router', typeName, plugin);
+ export const config: ScullyConfig = {
+   projectRoot: './src',
+   projectName: 'demo',
++  defaultPostRenderers: [DisableAngular],
+   outDir: './dist/static',
+   routes: {
+     '/pokemon/view/:id': {
+diff --git a/yarn.lock b/yarn.lock
+index e71cd66..023d1eb 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -7954,6 +7954,11 @@ schematics-utilities@^2.0.0:
+   optionalDependencies:
+     parse5 "^5.1.0"
+ 
++scully-plugin-disable-angular@^4.0.2:
++  version "4.0.2"
++  resolved "https://registry.yarnpkg.com/scully-plugin-disable-angular/-/scully-plugin-disable-angular-4.0.2.tgz#00074bb3a8b2ae636e2e6f3d0d5bd4603c177e15"
++  integrity sha512-UQ4boaHwyJh4ie2kqOSeMlBbhxQ3PqOpUpKiDmT1WGcn76398S8c2Entp09p8qrjGs8IP/klPsnNC/R1nUz7Tg==
++
+ select-hose@^2.0.0:
+   version "2.0.0"
+   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
+-- 
+2.20.1.windows.1
+

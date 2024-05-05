@@ -1,0 +1,24 @@
+From 9e9f99ec2fcae007ef112068734c8cce7d7ead19 Mon Sep 17 00:00:00 2001
+From: Orestes Carracedo <orestes@orestes.io>
+Date: Fri, 12 Jun 2020 16:30:59 +0200
+Subject: [PATCH] chore: Initial public version
+
+---
+ package.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index 08e4db1..6725016 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "demo",
+-  "version": "0.0.0",
++  "version": "1.0.0",
+   "license": "CC-BY-4.0",
+   "scripts": {
+     "ng": "ng",
+-- 
+2.20.1.windows.1
+
